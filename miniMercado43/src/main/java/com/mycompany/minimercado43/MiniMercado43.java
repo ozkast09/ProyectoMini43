@@ -11,6 +11,8 @@ package com.mycompany.minimercado43;
 public class MiniMercado43 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+       formularios.paginaPrincipal objetoPrincipal=new formularios.paginaPrincipal();
+       objetoPrincipal.setVisible(true);
+       
     }
 }
