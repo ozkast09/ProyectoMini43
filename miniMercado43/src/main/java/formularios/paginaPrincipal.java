@@ -31,15 +31,19 @@ public class paginaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         contenido = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         registrar = new javax.swing.JMenuItem();
+        registroInventario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
         jMenuItem3.setText("jMenuItem3");
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +67,14 @@ public class paginaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(registrar);
+
+        registroInventario.setText("Inventario");
+        registroInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registroInventarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(registroInventario);
 
         jMenuBar1.add(jMenu1);
 
@@ -103,6 +115,20 @@ public class paginaPrincipal extends javax.swing.JFrame {
         contenido.repaint();
         
     }//GEN-LAST:event_registrarActionPerformed
+
+    private void registroInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroInventarioActionPerformed
+        // TODO add your handling code here:
+        inventario ri=new inventario();
+        ri.setSize(742,469);
+        ri.setLocation(0,0);
+        
+        contenido.removeAll();
+        contenido.add(ri,BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+        
+        
+    }//GEN-LAST:event_registroInventarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,7 +172,9 @@ public class paginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem registrar;
+    private javax.swing.JMenuItem registroInventario;
     // End of variables declaration//GEN-END:variables
 }
