@@ -17,6 +17,8 @@ public class paginaPrincipal extends javax.swing.JFrame {
      */
     public paginaPrincipal() {
         initComponents();
+        clases.cconexion objetoConexion=new clases.cconexion();
+        objetoConexion.estableceConexion();
         
         
     }
