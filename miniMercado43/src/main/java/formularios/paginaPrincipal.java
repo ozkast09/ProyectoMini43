@@ -5,6 +5,8 @@
 package formularios;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -17,8 +19,14 @@ public class paginaPrincipal extends javax.swing.JFrame {
      */
     public paginaPrincipal() {
         initComponents();
-        clases.cconexion objetoConexion=new clases.cconexion();
-        objetoConexion.estableceConexion();
+        
+       
+        
+        Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        setSize(pantalla.width, pantalla.height);
+
+        // Maximizar la ventana (opcional)
+      
         
         
     }
@@ -36,12 +44,12 @@ public class paginaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         contenido = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        registrar = new javax.swing.JMenuItem();
+        menuInventario = new javax.swing.JMenu();
+        Ingresar = new javax.swing.JMenuItem();
         registroInventario = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        menuCompras = new javax.swing.JMenu();
+        menuInformes = new javax.swing.JMenu();
+        nemuSoporte = new javax.swing.JMenu();
 
         jMenuItem3.setText("jMenuItem3");
 
@@ -60,15 +68,15 @@ public class paginaPrincipal extends javax.swing.JFrame {
             .addGap(0, 469, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Inventario");
+        menuInventario.setText("Inventario");
 
-        registrar.setText("Registrar producto");
-        registrar.addActionListener(new java.awt.event.ActionListener() {
+        Ingresar.setText("Ingresar producto");
+        Ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarActionPerformed(evt);
+                IngresarActionPerformed(evt);
             }
         });
-        jMenu1.add(registrar);
+        menuInventario.add(Ingresar);
 
         registroInventario.setText("Inventario");
         registroInventario.addActionListener(new java.awt.event.ActionListener() {
@@ -76,18 +84,18 @@ public class paginaPrincipal extends javax.swing.JFrame {
                 registroInventarioActionPerformed(evt);
             }
         });
-        jMenu1.add(registroInventario);
+        menuInventario.add(registroInventario);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuInventario);
 
-        jMenu2.setText("Compras");
-        jMenuBar1.add(jMenu2);
+        menuCompras.setText("Compras");
+        jMenuBar1.add(menuCompras);
 
-        jMenu3.setText("jMenu3");
-        jMenuBar1.add(jMenu3);
+        menuInformes.setText("Informes");
+        jMenuBar1.add(menuInformes);
 
-        jMenu4.setText("jMenu4");
-        jMenuBar1.add(jMenu4);
+        nemuSoporte.setText("Soporte");
+        jMenuBar1.add(nemuSoporte);
 
         setJMenuBar(jMenuBar1);
 
@@ -105,10 +113,17 @@ public class paginaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+    private void IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarActionPerformed
         // TODO add your handling code here:
         registrarProducto rp=new registrarProducto();
-        rp.setSize(742, 469);
+        // Obtener las dimensiones de la pantalla
+         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+         int width = dimension.width;
+         int height = dimension.height;
+
+// Establecer el tamaño de la ventana
+         rp.setSize(width, height);
+        
         rp.setLocation(0,0);
         
         contenido.removeAll();
@@ -116,13 +131,17 @@ public class paginaPrincipal extends javax.swing.JFrame {
         contenido.revalidate();
         contenido.repaint();
         
-    }//GEN-LAST:event_registrarActionPerformed
+    }//GEN-LAST:event_IngresarActionPerformed
 
     private void registroInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroInventarioActionPerformed
         // TODO add your handling code here:
         inventario ri=new inventario();
-        ri.setSize(742,469);
-        ri.setLocation(0,0);
+        Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+         ri.setSize(pantalla.width, pantalla.height);
+
+        // Maximizar la ventana (opcional)
+       
+         ri.setLocation(0,0);
         
         contenido.removeAll();
         contenido.add(ri,BorderLayout.CENTER);
@@ -168,15 +187,15 @@ public class paginaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Ingresar;
     private javax.swing.JPanel contenido;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem registrar;
+    private javax.swing.JMenu menuCompras;
+    private javax.swing.JMenu menuInformes;
+    private javax.swing.JMenu menuInventario;
+    private javax.swing.JMenu nemuSoporte;
     private javax.swing.JMenuItem registroInventario;
     // End of variables declaration//GEN-END:variables
 }

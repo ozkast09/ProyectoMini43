@@ -28,12 +28,12 @@ public class inventario extends javax.swing.JPanel {
 
         controlInventario = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbinventario = new javax.swing.JTable();
 
         controlInventario.setBackground(new java.awt.Color(255, 255, 255));
         controlInventario.setBorder(javax.swing.BorderFactory.createTitledBorder("Control de inventario"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbinventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -44,7 +44,7 @@ public class inventario extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbinventario);
 
         javax.swing.GroupLayout controlInventarioLayout = new javax.swing.GroupLayout(controlInventario);
         controlInventario.setLayout(controlInventarioLayout);
@@ -79,6 +79,6 @@ public class inventario extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel controlInventario;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbinventario;
     // End of variables declaration//GEN-END:variables
 }
