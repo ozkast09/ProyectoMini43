@@ -4,10 +4,15 @@
  */
 package clases;
 
+import com.mysql.cj.jdbc.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 
 /**
  *
@@ -42,7 +47,7 @@ public class CProducto {
     
     
     
-    
+    // metodos para los combobox
     public void MostrarCategoriaCombo (JComboBox comboCategoria){
         clases.cconexion objetoConexion=new clases.cconexion();
         
@@ -149,5 +154,49 @@ public class CProducto {
         objetoConexion.cerrrarConexion();
         }
     }
+    
+    // Metodo para guardar informacion
+    public void agregarProducto(JTextField nombre,JTextField descripcion,JComboBox comboCategoria,JComboBox comboMarca, JComboBox comboMedida,JComboBox comboProveedor, JTextField cantidad){
+       cconexion objetoConexion=new cconexion();
+       
+       String consulta="insert into Inventario (nombre,descripcion,fkcategoria,fkmarca,fkunidadmedida,fkproveedor,cantidad) values (?,?,?,?,?,?,?);";
+       
+       
+        try {
+           
+            CallableStatement cs=(CallableStatement) objetoConexion.estableceConexion().prepareCall(consulta);
+           
+          cs.setString(1, nombre.getText());
+          cs.setString(2, descripcion.getText());
+          
+          int IDproducto= (int) comboCategoria.getClientProperty(comboCategoria.getSelectedItem());
+          cs.setInt(3,IDproducto);
+          
+          int idMarca= (int) comboMarca.getClientProperty(comboMarca.getSelectedItem());
+          cs.setInt(4, idMarca);
+        
+          
+          int idMedida=(int) comboMedida.getClientProperty(comboMedida.getSelectedItem());
+          cs.setInt(5,idMedida);
+          
+          int idProveedor=(int) comboProveedor.getClientProperty(comboProveedor.getSelectedItem());
+          cs.setInt(6,idProveedor);
+          
+          cs.setInt(7, Integer.parseInt(cantidad.getText()));  
+          
+          cs.execute();
+          
+          JOptionPane.showMessageDialog(null,"Producto guardado");
+             
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error al guardar:"+e.toString());
+        }
+        
+        
+    
+    
+    
+    }
+    
     
 }
