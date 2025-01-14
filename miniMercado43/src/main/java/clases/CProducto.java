@@ -11,7 +11,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -198,5 +200,77 @@ public class CProducto {
     
     }
     
+    // metodo para visualizar los datos en la tabla
+    public void mostrarInventario( JTable tablaInventario){
+        
+        clases.cconexion objetoConexion=new clases.cconexion();
+        
+        DefaultTableModel modelo=new DefaultTableModel();
+        
+        String sql="";
+        
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Categoria");
+        modelo.addColumn("Marca");
+        modelo.addColumn("U. medida");
+        modelo.addColumn("Proveedor");
+        modelo.addColumn("Cantidad");
+        
+        tablaInventario.setModel(modelo);
+        
+        sql="""
+            select 
+            Inventario.id,
+            Inventario.nombre,
+            Inventario.descripcion,
+            categoria.categoria,
+            marca.marca,
+            unidadMedida.unidadmedida,
+            proveedor.proveedor,
+            Inventario.cantidad
+            from 
+            Inventario
+            inner join categoria on Inventario.fkcategoria= categoria.id
+            inner join marca on Inventario.fkmarca= marca.id
+            inner join unidadMedida on Inventario.fkunidadmedida= unidadMedida.id
+            inner join proveedor on Inventario.fkproveedor= proveedor.id3;""";
+        
+        try {
+            Statement st= objetoConexion.estableceConexion().createStatement();
+            ResultSet rs= st.executeQuery(sql);
+            
+            
+            while (rs.next()) {  
+                
+                String id= rs.getString("id");
+                String nombre= rs.getString("nombre");
+                String descripcion= rs.getString("descripcion");
+                String categoria= rs.getString("categoria");
+                String marca= rs.getString("marca");
+                String medida= rs.getString("unidadmedida");
+                String proveedor= rs.getString("proveedor");
+                String cantidad= rs.getString("cantidad");
+                
+                modelo.addRow(new Object[] {id,nombre,descripcion,categoria,marca,medida,proveedor,cantidad});
+                
+                tablaInventario.setModel(modelo);
+            }
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Error al mostrar los datos de la tabla : "+e.toString());
+        }
+        
+        finally{
+        
+        objetoConexion.cerrrarConexion();
+        }
+           
+        
     
+    
+    
+    
+    }
 }

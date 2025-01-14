@@ -60,4 +60,21 @@ foreign key (fkproveedor) references proveedor(id3)
 
 select * from Inventario;
 
+select 
+Inventario.id,
+Inventario.nombre,
+Inventario.descripcion,
+categoria.categoria,
+marca.marca,
+unidadMedida.unidadmedida,
+proveedor.proveedor,
+Inventario.cantidad
+from 
+Inventario
+inner join categoria on Inventario.fkcategoria= categoria.id
+inner join marca on Inventario.fkmarca= marca.id
+inner join unidadMedida on Inventario.fkunidadmedida= unidadMedida.id
+inner join proveedor on Inventario.fkproveedor= proveedor.id3;
+
+
 insert into Inventario (nombre,descripcion,fkcategoria,fkmarca,fkunidadmedida,fkproveedor,cantidad) values ("Arroz Roa","Arroz",1,1,1,3,10);

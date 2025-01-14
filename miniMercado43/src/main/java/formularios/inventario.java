@@ -15,6 +15,8 @@ public class inventario extends javax.swing.JPanel {
      */
     public inventario() {
         initComponents();
+        clases.CProducto objetoInventario=new clases.CProducto();
+        objetoInventario.mostrarInventario(tbinventario);
     }
 
     /**
